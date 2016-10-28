@@ -16,6 +16,7 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.js"></script>
 
         <!-- fonts, icons -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -24,8 +25,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
 
         <!-- Custom files -->
-        <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/auth.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
         <link rel="stylesheet" href="css/main.css" />
     </head>
 
@@ -33,12 +34,55 @@
         <div class="header-container">
             <nav class="header">
                 <p class="corner-header">Moments</p>
-                <div class="photo-container user-photo-container">
-                    <img id="user-photo" />
+
+                <div class="container-profile">
+                    <div class="photo-container user-photo-container">
+                        <img class="profile-photo" id="user-photo"/>
+                    </div>
+                    <div id="container-user-name">
+                        <p class="user-name" id="user-name"></p>
+                        <span class="clickable" id="log-out">Sign out</span>
+                    </div>
                 </div>
-                <p class="user-name" id="user-name"></p>
+
             </nav>
-            
+
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="card moment-card">
+                    <div class="card-content moment-content">
+                        <div class="photo-container moment-user-photo-container">
+                        </div>
+                        <div class="moment-text">
+                            <p>I am a very simple card. I am good at containing small bits of information.
+                                I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        <span class="like-count">12</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="new-moment-container">
+            <div class="card input-card">
+                <form id="form-new-moment">
+                    <div class="card-content">
+
+                        <div class="input-field col s12">
+                            <textarea id="new-moment" type="text" class="materialize-textarea"></textarea>
+                            <label for="new-moment">Write about a new moment!</label>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <span class="clickable" id="submit-new-moment">Send!</span>
+                    </div>
+                </form>
+            </div>
         </div>
 
     </body>

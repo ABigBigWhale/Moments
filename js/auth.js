@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    
+$(function() {
+
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyD79RFKN1CVEPce8-jq6vSB50m6L3WPZAs",
@@ -21,13 +21,13 @@ $(document).ready(function() {
         // Create user, then set the user's display name
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(function(user) {
-            
+
             var photoRef = firebase.storage().ref(photoFile.name)
             photoRef.put(photoFile).then(function(){
                 photoRef.getDownloadURL().then(function(photoURL){
                     // Set display name and profile photo URL
                     user.updateProfile({
-                        userName: userName,
+                        displayName: userName,
                         photoURL: photoURL
                     }).then(function() {
                         window.location = '/';
@@ -39,8 +39,8 @@ $(document).ready(function() {
             alert(error.message);
         });
     };
-    
-    // SignIn: Function to authenticate on Firebase, then redirect to index.html
+
+    // Sign In: Function to authenticate on Firebase, then redirect to index.html
     var signIn = function() {
         // Get email and password
         var email = $('#email').val();
@@ -77,9 +77,10 @@ $(document).ready(function() {
     });
 
     // Assign click event to logout button
-    /*$('#log-out').on('click', function() {
+    $('#log-out').on('click', function() {
+        console.log("logging out...")
         signOut();
-    });*/
+    });
 
     // Authentication Change: see if a user is already signed in, and redirect
     var checked;

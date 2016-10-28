@@ -15,8 +15,8 @@ p {
 
 .header {
     text-align: center;
-    height: 15%;
     padding: 1rem;
+    min-height: 8rem;
     background-color: #00695C;
 }
 
@@ -38,7 +38,25 @@ p {
 }
 
 .user-name {
+    float: left;
     font-weight: 700;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    line-height: 20px;
+}
+
+.clickable {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+#log-out {
+    display: block;
+    clear: left;
+    text-align: left;
 }
 
 #container-forms {
@@ -90,15 +108,25 @@ p {
     justify-content: center;
     align-items: center;
     color: #9E9E9E;
-    line-height: 120px;
     overflow: hidden;
+}
+
+.profile-photo {
+    height: 100%;
+    width: auto;
+    margin: 0 auto;
 }
 
 .user-photo-container {
     width: 80px;
     height: 80px;
-    background-color: #eceff1;
-    box-shadow: inset 0 0 10px #212121;
+    float: left;
+}
+
+#container-user-name {
+    height: 100px;
+    float: left;
+    padding-left: 1rem;
 }
 
 #container-profile-photo-preview {
@@ -122,4 +150,47 @@ p {
     margin: 0 auto;
     height: 100%;
     width: auto;
+}
+
+.moment-card {
+    width: 100%;
+}
+
+.moment-text {
+    width: 100%;
+    min-height: 75px;
+    padding-left: 90px;
+}
+
+.card-action {
+    font-size: 1.5rem;
+    color: #FF9800;
+}
+
+.moment-user-photo-container {
+    float: left;
+    width: 75px;
+    height: 75px;
+}
+
+#new-moment-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    z-index: 1;
+}
+
+.input-card {
+    box-shadow: 0 0 20px #2A2A2A;
+    background-color: ghostwhite;
+    margin: 0;
+}
+
+#new-moment {
+    margin-bottom: 0;
+}
+
+#submit-new-moment {
+    text-decoration: none;
 }
