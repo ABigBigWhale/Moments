@@ -170,6 +170,7 @@ p {
 .card-action {
     font-size: 1.5rem;
     color: #FF9800;
+    user-select: none;
 }
 
 .moment-user-photo-container {
