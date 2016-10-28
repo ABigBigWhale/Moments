@@ -2,30 +2,45 @@
 
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Moments</title>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Moments</title>
 
-    <!-- jQuery, materialize -->
-    <script src="https://code.jquery.com/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.css" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.js"></script>
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
 
-    <!-- leaflet libraries -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+        <!-- jQuery, materialize -->
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.css" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.js"></script>
 
-    <!-- Custom files -->
-    <script type="text/javascript" src="js/main.js"></script>
-    <link rel="stylesheet" href="css/main.css" />
-</head>
+        <!-- fonts, icons -->
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<body>
-    <div class="header-container">
-        <nav class="header">Moments</nav>
-    </div>
-    
-</body>
+        <!-- leaflet libraries -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+
+        <!-- Custom files -->
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/auth.js"></script>
+        <link rel="stylesheet" href="css/main.css" />
+    </head>
+
+    <body>
+        <div class="header-container">
+            <nav class="header">
+                <p class="corner-header">Moments</p>
+                <div class="photo-container user-photo-container">
+                    <img id="user-photo" />
+                </div>
+                <p class="user-name" id="user-name"></p>
+            </nav>
+            
+        </div>
+
+    </body>
 
 </html>
