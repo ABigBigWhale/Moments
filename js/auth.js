@@ -65,7 +65,7 @@ $(function() {
     };
 
     // Assign event lister to form submission
-    $('form').on('submit', function(event) {
+    $('#form').on('submit', function(event) {
         event.preventDefault();
         if (global.isSignIn) {
             console.log("signing in...");
