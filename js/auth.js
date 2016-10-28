@@ -17,6 +17,13 @@ $(function() {
         var password = $("#password").val();
         var userName = $('#user-name').val();
         var photoFile = $('#profile-photo-upload')[0].files[0];
+        
+        console.log(photoFile);
+        
+        if (!photoFile) {
+            alert('Please select a profile photo.');
+            return;
+        }
 
         // Create user, then set the user's display name
         firebase.auth().createUserWithEmailAndPassword(email, password)
