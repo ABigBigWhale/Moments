@@ -93,6 +93,7 @@ $(function() {
         if (checked !== true) {
             // Rediriect to index.html if there is a user and the pathname isn't '/'
             if (user && window.location.pathname != './') {
+                console.log(window.location.pathname);
                 window.location = './';
             }
 
