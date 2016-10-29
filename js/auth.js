@@ -92,14 +92,17 @@ $(function() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (checked !== true) {
             // Rediriect to index.html if there is a user and the pathname isn't '/'
-            if (user && window.location.pathname != './') {
-                console.log(window.location.pathname);
+            if (user && window.location.pathname != './' && 
+                window.location.pathname != '/liuh25/info343/a4-firebase') {
+                
                 window.location = './';
             }
 
             // Redirect to sign-in if there is NOT a user and the pathname IS '/'
-            if (!user && window.location.pathname == './') {
-                window.location = './sign-in.html';
+            if (!user && window.location.pathname != './' && 
+                window.location.pathname != '/liuh25/info343/a4-firebase') {
+                
+                window.location = './signin.html';
             }
             checked = true;
         }
