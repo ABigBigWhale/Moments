@@ -32,10 +32,8 @@
 
     <body>
         <div class="header-container">
-            <nav class="header">
-                <p class="corner-header">Moments</p>
-
-                <div class="container-profile">
+            <nav class="header nav-wrapper">
+                <div class="left container-profile">
                     <div class="photo-container user-photo-container">
                         <img class="profile-photo" id="user-photo"/>
                     </div>
@@ -45,6 +43,16 @@
                     </div>
                 </div>
 
+                <p class="right corner-header">Moments</p>
+
+                <ul class="view-select-list">
+                    <li class="view-select active" id="view-newest-select">
+                        <a class="clickable" id="view-newest"><i class="material-icons">query_builder</i></a>
+                    </li>
+                    <li class="view-select" id="view-hottest-select">
+                        <a class="clickable" id="view-hottest"><i class="material-icons">whatshot</i></a>
+                    </li>
+                </ul>
             </nav>
 
         </div>

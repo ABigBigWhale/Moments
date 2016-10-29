@@ -17,11 +17,10 @@ $(function() {
         var password = $("#password").val();
         var userName = $('#user-name').val();
         var photoFile = $('#profile-photo-upload')[0].files[0];
-        
-        console.log(photoFile);
-        
+
         if (!photoFile) {
-            alert('Please select a profile photo.');
+            $('.error-message').text('Please select a profile photo.');
+            $('.error-message').slideDown();
             return;
         }
 
@@ -43,7 +42,8 @@ $(function() {
             });
         })
             .catch(function(error) {
-            alert(error.message);
+            $('.error-message').text(error);
+            $('.error-message').slideDown();
         });
     };
 
@@ -59,7 +59,8 @@ $(function() {
             window.location = '/';
         })
             .catch(function(error) {
-            alert(error);
+            $('.error-message').text(error);
+            $('.error-message').slideDown();
         });
     };
 
@@ -75,17 +76,14 @@ $(function() {
     $('#form').on('submit', function(event) {
         event.preventDefault();
         if (global.isSignIn) {
-            console.log("signing in...");
             signIn();
         } else {
-            console.log("signing up...");
             signUp();
         }
     });
 
     // Assign click event to logout button
     $('#log-out').on('click', function() {
-        console.log("logging out...")
         signOut();
     });
 
@@ -105,6 +103,5 @@ $(function() {
             checked = true;
         }
     });
-
 
 });

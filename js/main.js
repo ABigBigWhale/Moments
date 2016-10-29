@@ -1,23 +1,16 @@
-$(function() {
-
-    // Initialize Firebase
-    /*var config = {
-        apiKey: "AIzaSyD79RFKN1CVEPce8-jq6vSB50m6L3WPZAs",
-        authDomain: "info343-a4.firebaseapp.com",
-        databaseURL: "https://info343-a4.firebaseio.com",
-        storageBucket: "info343-a4.appspot.com",
-        messagingSenderId: "1026977934463"
-    };
-    firebase.initializeApp(config);*/
+$(document).ready(function() {
 
     var moments = firebase.database().ref('moments');
+    var viewType = 'view-newest';
     var user;
+
+    $(".dropdown-button").dropdown();
 
     firebase.auth().getRedirectResult().then(function(result) {
         // When this operation succeeds, currentUser should be set.
         user = firebase.auth().currentUser;
         if (!user) {
-            window.position('/signin.html');
+            window.location = '/signin.html';
         }
 
         initHeader();
@@ -26,9 +19,9 @@ $(function() {
 
     moments.on('child_added', function(snapshot){
         var data = snapshot.val();
-        renderMoment(snapshot.key, data);
+        if (viewType == 'view-newest') renderMoment(snapshot.key, data);
     });
-    
+
     moments.on('child_changed', function(snapshot){
         updateMoment(snapshot.key, snapshot.val());
     });
@@ -66,12 +59,10 @@ $(function() {
         )
 
         momentCard.css('display', 'none');
-
         $('#moments-container').prepend(momentCard);
-
         momentCard.slideDown();
-    }
-    
+    };
+
     var updateMoment = function(id, data) {
         var momentCard = $('#' + id);
         momentCard.find($('.profile-photo')).replaceWith(
@@ -83,8 +74,31 @@ $(function() {
         momentCard.find($('.like-count')).replaceWith(
             $('<span>', {class: 'like-count', text: data.likeCount})
         );
-        
-    }
+
+    };
+
+    var reloadMoment = function(view) {
+        moments.once('value').then(snapshot => {
+            var allMoments = Object.keys(snapshot.val()).map(key => {
+                var moment = snapshot.val()[key];
+                moment.momentId = key;
+                return moment;
+            });
+            
+            console.log(allMoments);
+
+            $('#moments-container').empty();
+            if (view == 'view-hottest') {
+                allMoments.sort( (m1, m2) => parseInt(m1.likeCount) - parseInt(m2.likeCount) );
+            }
+            
+            allMoments.forEach(moment => {
+                var momentId = moment.momentId;
+                delete moment.momentId;
+                renderMoment(momentId, moment);
+            });
+        });
+    };
 
     $('#submit-new-moment').click(function(){
         console.log("new moment!")
@@ -93,7 +107,7 @@ $(function() {
 
     $('#form-new-moment').on('submit', function(event){
         event.preventDefault();
-        
+
         moments.push({
             photoURL: user.photoURL,
             momentText: $('#new-moment').val(),
@@ -102,16 +116,28 @@ $(function() {
 
         $('#new-moment').val('').css('height', 'auto');
     });
-    
+
     $('#moments-container').on('click', 'i.fa-heart-o, i.fa-heart', function(){
         var momentId = $(this).closest('.moment-card').attr('id');
-        console.log(momentId);
         moments.child(momentId).once('value').then(function(snapshot){
             console.log(snapshot.val().likeCount);
             var prevCount = snapshot.val().likeCount;
             moments.child(momentId).update({likeCount: prevCount + 1});
         });
         $(this).toggleClass('fa-heart-o').toggleClass('fa-heart');
+    });
+
+    $('.view-select-list').on('click', '.clickable', function(){
+        var newViewType = $(this).attr('id');
+        $(this).closest('.view-select').siblings().removeClass('active');
+        $(this).closest('.view-select').addClass('active');
+        
+        if (newViewType != viewType) {
+            viewType = newViewType;
+            reloadMoment(viewType);
+        }
+        
+        console.log(viewType);
     });
 
 });
