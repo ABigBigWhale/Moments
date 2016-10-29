@@ -10,7 +10,7 @@ $(document).ready(function() {
         // When this operation succeeds, currentUser should be set.
         user = firebase.auth().currentUser;
         if (!user) {
-            window.location = '/signin.html';
+            window.location = './signin.html';
         }
 
         initHeader();

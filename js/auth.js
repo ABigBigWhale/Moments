@@ -36,7 +36,7 @@ $(function() {
                         displayName: userName,
                         photoURL: photoURL
                     }).then(function() {
-                        window.location = '/';
+                        window.location = './';
                     });
                 });
             });
@@ -56,7 +56,7 @@ $(function() {
         // Authenticate using email and password, then redirect
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(function() {
-            window.location = '/';
+            window.location = './';
         })
             .catch(function(error) {
             $('.error-message').text(error);
@@ -92,12 +92,12 @@ $(function() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (checked !== true) {
             // Rediriect to index.html if there is a user and the pathname isn't '/'
-            if (user && window.location.pathname != '/') {
-                window.location = '/';
+            if (user && window.location.pathname != './') {
+                window.location = './';
             }
 
             // Redirect to sign-in if there is NOT a user and the pathname IS '/'
-            if (!user && window.location.pathname == '/') {
+            if (!user && window.location.pathname == './') {
                 window.location = 'sign-in.html';
             }
             checked = true;
