@@ -99,8 +99,8 @@ $(function() {
             }
 
             // Redirect to sign-in if there is NOT a user and the pathname IS '/'
-            if (!user && window.location.pathname != './' && 
-                window.location.pathname != '/liuh25/info343/a4-firebase/') {
+            if (!user && (window.location.pathname == './' || 
+                window.location.pathname == '/liuh25/info343/a4-firebase/')) {
                 
                 window.location = './signin.html';
             }
