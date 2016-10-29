@@ -104,9 +104,9 @@ $(document).ready(function() {
     };
 
     var currentUserLiked = function(moment) {
-        
+
         if ('likedUsers' in moment) {
-            
+
             for (var key in moment.likedUsers) {
                 if (moment.likedUsers[key] == user.uid) {
                     return key;
@@ -114,7 +114,7 @@ $(document).ready(function() {
             }
 
         }
-        
+
         return null;
     }
 
@@ -122,7 +122,7 @@ $(document).ready(function() {
         console.log("new moment!")
         $('#form-new-moment').submit();
     });
-    
+
     $("#new-moment").keypress(function (e) {
         if(e.which == 13) {
             e.preventDefault();
@@ -133,13 +133,18 @@ $(document).ready(function() {
     $('#form-new-moment').on('submit', function(event){
         event.preventDefault();
 
-        moments.push({
-            photoURL: user.photoURL,
-            momentText: $('#new-moment').val(),
-            likeCount: 0,
-            likedUsers: {}
-        });
+        var momentText = $('#new-moment').val();
 
+        if (!momentText || !momentText.trim()) {
+            alert("Please fill in the text area first ;)");
+        } else {
+            moments.push({
+                photoURL: user.photoURL,
+                momentText: $('#new-moment').val(),
+                likeCount: 0,
+                likedUsers: {}
+            });
+        }
         $('#new-moment').val('').css('height', 'auto');
     });
 
